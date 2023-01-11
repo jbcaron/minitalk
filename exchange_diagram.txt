@@ -1,0 +1,66 @@
++----------------------------------+
+|                                  |
+|  User Input message              |
+|                                  |
++----------------------------------+
+		  |
+		  |    
+		  |    
+		  v
++----------------------------------+
+|                                  |
+|                                  |
+|   send_msg() function            |
+|   - validate input message       |
+|   - for each byte in message     |
++----------------------------------+
+		  |
+		  |     
+		  |   
+		  v
++----------------------------------+
+|                                  |
+|                                  |
+|   send_byte() function           |
+|   - for i < 8                    |
+|   - set or unset bit of byte     |
+|   - Send signal to server        |
+|   - Wait for ack                 |
++----------------------------------+
+		  |
+		  |     
+		  |   
+		  v
++----------------------------------+
+|                                  |
+|                                  |
+|   Server                         |
+|                                  |
++----------------------------------+
+		  |
+		  |      receives bits 
+		  |      of message
+		  v
++----------------------------------+
+|                                  |
+|                                  |
+|   handle_sigusr() function       |
+|   -Check the signal type         |
+|   - Change the value of g_rec_bit|
+|   - Send ack signal to client    |
++----------------------------------+
+		  |
+		  |      receives ack
+		  |
+		  v
++----------------------------------+
+|                                  |
+|                                  |
+|   get_msg() function             |
+|   - calls get_byte() to          |
+|     get a byte of message        |
+|   - appends each byte            |
+|     to dynamic string            |
+|   - when the message is done     |
+|     print out the message        |
++----------------------------------+

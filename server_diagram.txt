@@ -1,0 +1,54 @@
++---------------------------------+
+|                                 |
+|       Server Program Flow       |
+|                                 |
++---------------------------------+
+        |            |
+        |            |
+        |            |
++---------------------------------+
+| Initialize signal handling      |
++---------------------------------+
+        |            |
+        |            |
+        |            |
++---------------------------------+
+| Main loop:                      |
+|                                 |
+| If g_rec_bit >= 0               |
+|     get_msg()                   |
+| Pause                           |
++---------------------------------+
+        |            |
+        |            |
+        |            |
++---------------------------------+
+| Function get_msg():             |
+|  Initialize and create dynamic  |
+|   string                        |
+|  While byte > 0                 |
+|    byte = get_byte()            |
+|    Append byte to dynamic string|
+|  If byte == 0                   |
+|    Send signal to client        |
+|    Write message to stdout      |
+|  Free dynamic string            |
++---------------------------------+
+        |            |
+        |            |
+        |            |
++---------------------------------+
+| Function get_byte():            |
+|  Initialize variables           |
+|  While i < 8                    |
+|    Wait for next bit            |
+|    If g_rec_bit == 1            |
+|      Set the corresponding bit  |
+|      of the byte                |
+|    Else                         |
+|      Unset the corresponding    |
+|      bit of the byte            |
+|    Send signal to client        |
+|    Increment i                  |
+|  Return byte                    |
++---------------------------------+
