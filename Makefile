@@ -6,7 +6,7 @@
 #    By: jcaron <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 14:57:57 by jcaron            #+#    #+#              #
-#    Updated: 2023/01/11 14:09:27 by jcaron           ###   ########.fr        #
+#    Updated: 2023/01/12 20:10:37 by jcaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,29 +28,29 @@ NAME_CLI	=	client
 NAME_SRV	=	server
 
 CC			=	clang
-CFLAG		=	-Weverything
+CFLAG		=	-Wall -Werror -Wextra
+LIBFLAG		=	-I./libft -L./libft -lft
 
 # for debug
 #CFLAG		=	-Weverything
 
 %.o: %.c $(INC_D)*.h Makefile
-	@$(CC) $(CFLAG) -I$(INC_D) -c $< -o $@
+	@$(CC) $(CFLAG) -I$(INC_D) -I./libft -c $< -o $@ 
 	@echo "***compilation of '$<' in '$@'***"
 
 all: $(NAME_CLI) $(NAME_SRV)
 
 libft.a:
+	@git submodule update --init
 	@(cd libft && make)
-	@cp ./libft/libft.a ./
-	@cp ./libft/libft.h $(INC_D)
 	@echo "***compilation of library libft***"
 
 $(NAME_CLI): libft.a $(OBJ_CLI)
-	@$(CC) $(CFLAG) -I$(INC_D) $(OBJ_CLI) -o $(NAME_CLI) libft.a
+	@$(CC) $(CFLAG) -I$(INC_D)  $(OBJ_CLI) -o $(NAME_CLI) $(LIBFLAG)
 	@echo "***compilation of client***"
 
 $(NAME_SRV):libft.a $(OBJ_SRV)
-	@$(CC) $(CFLAG) -I$(INC_D) $(OBJ_SRV) -o $(NAME_SRV) libft.a
+	@$(CC) $(CFLAG) -I$(INC_D) $(OBJ_SRV) -o $(NAME_SRV) $(LIBFLAG)
 	@echo "***compilation of server***"
 
 clean:
