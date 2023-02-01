@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcaron <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 14:57:57 by jcaron            #+#    #+#              #
-#    Updated: 2023/01/13 18:33:38 by jcaron           ###   ########.fr        #
+#    Updated: 2023/02/01 13:49:53 by jcaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ all: $(NAME_CLI) $(NAME_SRV)
 libft:
 	@git submodule update --remote
 	@(cd libft && make)
-	@echo "***compilation of library libft***"
 
 $(NAME_CLI): libft $(OBJ_CLI)
 	@$(CC) $(CFLAG) -I$(INC_D) -I$(INC_LIB) $(OBJ_CLI) -o $(NAME_CLI) $(LIBFLAG)

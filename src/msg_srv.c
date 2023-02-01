@@ -6,7 +6,7 @@
 /*   By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:09:38 by jcaron            #+#    #+#             */
-/*   Updated: 2023/01/11 16:26:01 by jcaron           ###   ########.fr       */
+/*   Updated: 2023/02/01 13:51:13 by jcaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,6 @@
 */
 
 extern int	g_rec_bit;
-
-static void	ds_append_char_protect(t_dyn_str *ds, char c)
-{
-	if (!ds_append_char(ds, c))
-	{
-		ds_destroy(ds);
-		error(MEM_ALLOC, true);
-	}
-}
 
 /**
  * @brief Receives one byte of data from the client program.
@@ -130,12 +121,12 @@ void	get_msg(void)
 		byte = get_byte();
 		if (byte == ESC)
 			break ;
-		ds_append_char_protect(ds_msg, byte);
+		ds_append_char(ds_msg, byte);
 	}
 	if (byte == 0)
 	{
 		kill(pid_cli(0), SIG_ACK_MSG);
-		ds_append_char_protect(ds_msg, '\n');
+		ds_append_char(ds_msg, '\n');
 		write(1, ds_msg->str, ds_msg->len);
 	}
 	ds_destroy(ds_msg);
