@@ -6,7 +6,7 @@
 /*   By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:09:38 by jcaron            #+#    #+#             */
-/*   Updated: 2023/02/01 13:51:13 by jcaron           ###   ########.fr       */
+/*   Updated: 2023/10/08 18:10:35 by jcaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 #include "server.h"
 #include "msg_srv.h"
 #include "minitalk.h"
-#include "libft.h"
+#include "../dynamic_string/dyn_str.h"
 #include "error.h"
 
 /**

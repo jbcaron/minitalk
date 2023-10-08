@@ -1,3 +1,3 @@
-[submodule "libft"]
-	path = libft
-	url = https://github.com/jbcaron/libft
+[submodule "dynamic_string"]
+	path = dynamic_string
+	url = https://github.com/jbcaron/dynamic_string

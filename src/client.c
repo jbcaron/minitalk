@@ -6,7 +6,7 @@
 /*   By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 18:22:31 by jcaron            #+#    #+#             */
-/*   Updated: 2023/01/11 14:26:29 by jcaron           ###   ########.fr       */
+/*   Updated: 2023/10/08 18:10:11 by jcaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@
  * server.
 */
 
+#include <stddef.h>
+#include <stdlib.h>
 #include "minitalk.h"
 #include "client.h"
 #include "msg_cli.h"
-#include "libft.h"
+#include "str_is.h"
 #include "error.h"
 
 /**
@@ -84,7 +86,7 @@ int	get_pid(int argc, char **argv)
 		error(NUM_ARG, true);
 	if (!ft_str_is_int(argv[1]))
 		error(BAD_ARG, true);
-	pid = ft_atoi(argv[1]);
+	pid = atoi(argv[1]);
 	if (pid <= 1)
 		error(BAD_PID, true);
 	return (pid);

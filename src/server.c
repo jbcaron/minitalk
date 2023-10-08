@@ -6,7 +6,7 @@
 /*   By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 18:21:26 by jcaron            #+#    #+#             */
-/*   Updated: 2023/01/11 14:23:51 by jcaron           ###   ########.fr       */
+/*   Updated: 2023/10/08 18:11:08 by jcaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@
 
 #include <unistd.h>
 #include <signal.h>
+#include <stdio.h>
 #include "minitalk.h"
 #include "server.h"
 #include "msg_srv.h"
-#include "libft.h"
 #include "color.h"
 
 /**
@@ -130,7 +130,7 @@ void	init_sig(void)
 
 int	main(void)
 {
-	ft_printf(CLR"PID : %d\n", getpid());
+	printf(CLR"PID : %d\n", getpid());
 	init_sig();
 	while (1)
 	{

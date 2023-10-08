@@ -6,13 +6,15 @@
 #    By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 14:57:57 by jcaron            #+#    #+#              #
-#    Updated: 2023/02/01 13:49:53 by jcaron           ###   ########.fr        #
+#    Updated: 2023/10/08 18:16:03 by jcaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # files
 
-SRC			=	./src/error.c
+SRC			=	./src/error.c \
+				./src/str_is.c \
+				./dynamic_string/dyn_str.c
 
 INC_D		=	./include/
 
@@ -30,34 +32,23 @@ NAME_SRV	=	server
 CC			=	clang
 CFLAG		=	-Wall -Werror -Wextra
 
-# for debug
-#CFLAG		=	-Weverything
-
-#dependencies library
-INC_LIB		=	./libft/
-LIBFLAG		=	-L./libft -lft
-
 
 %.o: %.c
-	@$(CC) $(CFLAG) -I$(INC_D) -I$(INC_LIB) -c $< -o $@ 
+	@$(CC) $(CFLAG) -I$(INC_D) -c $< -o $@ 
 	@echo "***compilation of '$<' in '$@'***"
 
 all: $(NAME_CLI) $(NAME_SRV)
 
-libft:
-	@git submodule update --remote
-	@(cd libft && make)
-
-$(NAME_CLI): libft $(OBJ_CLI)
-	@$(CC) $(CFLAG) -I$(INC_D) -I$(INC_LIB) $(OBJ_CLI) -o $(NAME_CLI) $(LIBFLAG)
+$(NAME_CLI): $(OBJ_CLI)
+	@$(CC) $(CFLAG) -I$(INC_D) $(OBJ_CLI) -o $(NAME_CLI)
 	@echo "***compilation of client***"
 
-$(NAME_SRV):libft $(OBJ_SRV)
-	@$(CC) $(CFLAG) -I$(INC_D) -I$(INC_LIB) $(OBJ_SRV) -o $(NAME_SRV) $(LIBFLAG)
+$(NAME_SRV): $(OBJ_SRV)
+	@$(CC) $(CFLAG) -I$(INC_D)  $(OBJ_SRV) -o $(NAME_SRV)
 	@echo "***compilation of server***"
 
 clean:
-	@rm -f $(OBJ_CLI) $(OBJ_CLI)
+	@rm -f $(OBJ_CLI) $(OBJ_SRV)
 	@echo "***delation of all objects files***"
 
 fclean: clean

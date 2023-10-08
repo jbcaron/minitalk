@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vla.h                                              :+:      :+:    :+:   */
+/*   str_is.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 15:12:18 by jcaron            #+#    #+#             */
-/*   Updated: 2023/01/05 15:25:41 by jcaron           ###   ########.fr       */
+/*   Created: 2023/01/10 16:16:46 by jcaron            #+#    #+#             */
+/*   Updated: 2023/10/08 18:08:21 by jcaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VLA_H
-# define VLA_H
+#ifndef STR_IS_H
+# define STR_IS_H
 
-typedef struct s_vla
-{
-	size_t	nb_elem;
-	size_t	index;
-	char	*content;
-}	t_vla;
+# include <stdbool.h>
 
-void	vla_init(t_vla *vla, size_t nb_elem);
-void	vla_add(t_vla *vla, char new_elem);
-void	vla_destroy(t_vla *vla);
+# define STR_MIN_INT "2147483648"
+# define STR_MAX_INT "2147483647"
 
-#endif
+bool	ft_str_is_digit(const char *str);
+bool	ft_str_is_int(const char *str);
+
+#endif /* STR_IS_H */

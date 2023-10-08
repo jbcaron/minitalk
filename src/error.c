@@ -6,7 +6,7 @@
 /*   By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:08:16 by jcaron            #+#    #+#             */
-/*   Updated: 2023/01/11 13:21:39 by jcaron           ###   ########.fr       */
+/*   Updated: 2023/10/08 18:02:47 by jcaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "error.h"
-#include "libft.h"
 
 /**
  * @brief Prints an error message and exits the program.

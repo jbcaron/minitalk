@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   msg_cli.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcaron <jcaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:19:05 by jcaron            #+#    #+#             */
-/*   Updated: 2023/01/15 18:51:37 by jcaron           ###   ########.fr       */
+/*   Updated: 2023/10/08 18:08:14 by jcaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,4 @@
 void	send_byte(int pid, char byte);
 void	send_msg(int pid, char *msg);
 
-#endif
+#endif /* MSG_CLI_H */
